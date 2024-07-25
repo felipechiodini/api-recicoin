@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return response('Hello World', 200);
-});
+Route::prefix('auth')
+    ->group(function () {
+        Route::post('login', \App\Http\Controllers\LoginController::class);
+    });
