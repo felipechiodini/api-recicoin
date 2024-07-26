@@ -4,23 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\UserCollect;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controllers\Middleware;
 
 class CollectDetailsController extends Controller
 {
 
-    public function __invoke(Request $request)
+    public function __invoke(UserCollect $userCollect, Request $request)
     {
-        $collect = UserCollect::query()
-            ->create([
-                'user_id' => $request->user()->id,
-                'status' => 'pending'
-            ]);
-
-        $message = 'Sua solicitação de coleta foi enviada com sucesso!';
+        $collect = [
+            'id' => $userCollect->id,
+            // 'status' => $userCollect->status,
+            // 'points' => 200,
+            // 'date' => Carbon::parse($userCollect->created_at)->format('d/m/Y'),
+        ];
 
         return response()
-            ->json(compact('message', 'collect'));
+            ->json(compact('collect'));
     }
 
 }

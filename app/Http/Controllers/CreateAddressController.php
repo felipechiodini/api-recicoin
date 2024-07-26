@@ -13,7 +13,6 @@ class CreateAddressController extends Controller
 
 
 
-
     }
 
 }
