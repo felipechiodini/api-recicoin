@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eba04bbb24b3180d2a6614993a886c4b",
+    "content-hash": "23c7e988c574899fe5183a6d95f7e790",
     "packages": [
         {
             "name": "brick/math",
@@ -505,6 +505,40 @@
                 }
             ],
             "time": "2023-10-06T06:47:41+00:00"
+        },
+        {
+            "name": "felipechiodini/cpf",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/felipechiodini/cpf.git",
+                "reference": "134eae9f958bd1f89629af6f8baddfc9fe19ade3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/felipechiodini/cpf/zipball/134eae9f958bd1f89629af6f8baddfc9fe19ade3",
+                "reference": "134eae9f958bd1f89629af6f8baddfc9fe19ade3",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Felipechiodini\\CpfValidator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Felipe Bona",
+                    "email": "felipechiodinibona@hotmail.com"
+                }
+            ],
+            "description": "Util class for cpf things",
+            "support": {
+                "issues": "https://github.com/felipechiodini/cpf/issues",
+                "source": "https://github.com/felipechiodini/cpf/tree/1.0"
+            },
+            "time": "2024-07-26T14:32:11+00:00"
         },
         {
             "name": "fruitcake/php-cors",
