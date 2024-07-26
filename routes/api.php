@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('app')
     ->group(function() {
-        Route::post('login', 'LoginController@login');
+        Route::post('login', App\Http\Controllers\LoginController::class);
         Route::post('sing-up', App\Http\Controllers\SingUpController::class);
 
         Route::middleware('auth:sanctum')
