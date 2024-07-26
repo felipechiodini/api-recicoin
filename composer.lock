@@ -508,16 +508,16 @@
         },
         {
             "name": "felipechiodini/cpf",
-            "version": "1.0",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/felipechiodini/cpf.git",
-                "reference": "134eae9f958bd1f89629af6f8baddfc9fe19ade3"
+                "reference": "ac88c320e26737cabc60103a4b938146dc178b0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/felipechiodini/cpf/zipball/134eae9f958bd1f89629af6f8baddfc9fe19ade3",
-                "reference": "134eae9f958bd1f89629af6f8baddfc9fe19ade3",
+                "url": "https://api.github.com/repos/felipechiodini/cpf/zipball/ac88c320e26737cabc60103a4b938146dc178b0e",
+                "reference": "ac88c320e26737cabc60103a4b938146dc178b0e",
                 "shasum": ""
             },
             "type": "library",
@@ -536,9 +536,9 @@
             "description": "Util class for cpf things",
             "support": {
                 "issues": "https://github.com/felipechiodini/cpf/issues",
-                "source": "https://github.com/felipechiodini/cpf/tree/1.0"
+                "source": "https://github.com/felipechiodini/cpf/tree/1.0.1"
             },
-            "time": "2024-07-26T14:32:11+00:00"
+            "time": "2024-07-26T15:04:03+00:00"
         },
         {
             "name": "fruitcake/php-cors",
