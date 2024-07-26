@@ -1,16 +1,19 @@
 <?php
 
-use App\Http\Controllers\SingUpController;
 use Illuminate\Support\Facades\Route;
 
-
 Route::prefix('app')
-    ->group(function () {
-        Route::prefix('auth')
-            ->group(function () {
-                Route::post('login', 'LoginController@login');
-            });
+    ->group(function() {
+        Route::post('login', 'LoginController@login');
+        Route::post('sing-up', App\Http\Controllers\SingUpController::class);
 
-        Route::post('sing-up', SingUpController::class);
+        Route::middleware('auth:sanctum')
+            ->group(function() {
+                Route::get('extract', App\Http\Controllers\ExtractController::class);
+                Route::post('collect/request', App\Http\Controllers\RequestCollectController::class);
+                Route::get('collect/{collect}/details', App\Http\Controllers\CollectDetailsController::class);
+                Route::post('request-whithdraw', App\Http\Controllers\RequestWhithdrawController::class);
+                Route::post('address', App\Http\Controllers\CreateAddressController::class);
+            });
     });
 
