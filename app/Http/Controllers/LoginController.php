@@ -2,23 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
 
-    public function __invoke()
+    public function login()
     {
         $credentials = request(['email', 'password']);
 
-        if (!$token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+        if (Auth::attempt($credentials)) {
+            $user = User::query()
+                ->where('email', $credentials['email'])
+                ->first();
+
+            $token = $user->createToken('authToken');
         }
 
-        $user = auth()->user();
-
         return response()
-            ->json(compact('user', 'token'));
+            ->json([
+                'token' => $token->plainTextToken
+            ]);
     }
 
 }

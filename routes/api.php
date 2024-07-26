@@ -4,5 +4,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('auth')
     ->group(function () {
-        Route::post('login', \App\Http\Controllers\LoginController::class);
+        Route::post('login', 'LoginController@login');
     });
