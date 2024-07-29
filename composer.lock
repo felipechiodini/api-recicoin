@@ -508,22 +508,22 @@
         },
         {
             "name": "felipechiodini/cpf",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/felipechiodini/cpf.git",
-                "reference": "bcf7e031c0ea31336aef876b883ba99486a69abc"
+                "reference": "4a98c71b07583079787e5b5e7895667e6da88e74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/felipechiodini/cpf/zipball/bcf7e031c0ea31336aef876b883ba99486a69abc",
-                "reference": "bcf7e031c0ea31336aef876b883ba99486a69abc",
+                "url": "https://api.github.com/repos/felipechiodini/cpf/zipball/4a98c71b07583079787e5b5e7895667e6da88e74",
+                "reference": "4a98c71b07583079787e5b5e7895667e6da88e74",
                 "shasum": ""
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Felipechiodini\\CpfValidator\\": "src/"
+                    "Felipechiodini\\Cpf\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -536,9 +536,9 @@
             "description": "Util class for cpf things",
             "support": {
                 "issues": "https://github.com/felipechiodini/cpf/issues",
-                "source": "https://github.com/felipechiodini/cpf/tree/1.0.1"
+                "source": "https://github.com/felipechiodini/cpf/tree/1.0.2"
             },
-            "time": "2024-07-26T16:13:08+00:00"
+            "time": "2024-07-29T02:36:40+00:00"
         },
         {
             "name": "fruitcake/php-cors",
