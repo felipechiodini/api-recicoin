@@ -11,16 +11,16 @@ class LoginController extends Controller
 
     public function __invoke(Request $request)
     {
-        $loginUserData = $request->validate([
-            'email'=>'required',
-            'password'=>'required'
+        $credentials = $request->validate([
+            'email' => 'required',
+            'password' => 'required'
         ]);
 
         $user = User::query()
-            ->where('email', $loginUserData['email'])
+            ->where('email', $credentials['email'])
             ->first();
 
-        if (!$user || !Hash::check($loginUserData['password'],$user->password)) {
+        if (!$user || !Hash::check($credentials['password'], $user->password)) {
             return response()->json(['message' => 'Invalid Credentials'], 401);
         }
 

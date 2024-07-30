@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Rules\Cpf as RulesCpf;
-use App\Rules\PasswordStrength;
 use Felipechiodini\Cpf\Cpf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +17,7 @@ class SingUpController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', new PasswordStrength],
+            'password' => ['required', 'string', 'min:8'],
             'cellphone' => ['required', 'string', 'max:255'],
             'document' => ['required', new RulesCpf, 'unique:users'],
         ]);
