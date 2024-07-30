@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\UserTransaction;
 use Carbon\Carbon;
+use Felipechiodini\Helpers\Helpers;
 use Illuminate\Http\Request;
 
 class ExtractController extends Controller
@@ -11,9 +12,9 @@ class ExtractController extends Controller
 
     public function __invoke(Request $request)
     {
-        $points = 1000;
+        $points = Helpers::formatCurrency(1000);
 
-        $extract = UserTransaction::query()
+        $extracts = UserTransaction::query()
             ->where('user_id', $request->user()->id)
             ->orderBy('created_at', 'desc')
             ->get()
@@ -27,7 +28,7 @@ class ExtractController extends Controller
             });
 
         return response()
-            ->json(compact('extract', 'points'));
+            ->json(compact('extracts', 'points'));
 
     }
 

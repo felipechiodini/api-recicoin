@@ -13,7 +13,8 @@ class RequestWhithdrawController extends Controller
         UserWhithdrawRequest::query()
             ->create([
                 'user_id' => $request->user()->id,
-                'amount' => $request->amount
+                'amount' => $request->amount,
+                'status' => 'pending',
             ]);
 
         $message = 'Sua solicitação de saque foi enviada com sucesso!';
