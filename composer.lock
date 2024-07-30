@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "23c7e988c574899fe5183a6d95f7e790",
+    "content-hash": "971157fdc6a789206a8e1409aa5bdfe2",
     "packages": [
         {
             "name": "brick/math",
@@ -539,6 +539,43 @@
                 "source": "https://github.com/felipechiodini/cpf/tree/1.0.2"
             },
             "time": "2024-07-29T02:36:40+00:00"
+        },
+        {
+            "name": "felipechiodini/helpers",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/felipechiodini/helpers.git",
+                "reference": "5278b4665832da62b76e041cb1c5bbfd9b590e15"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/felipechiodini/helpers/zipball/5278b4665832da62b76e041cb1c5bbfd9b590e15",
+                "reference": "5278b4665832da62b76e041cb1c5bbfd9b590e15",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Felipechiodini\\Helpers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Felipe Bona",
+                    "email": "felipechiodinibona@hotmail.com"
+                }
+            ],
+            "description": "meus helpers",
+            "support": {
+                "issues": "https://github.com/felipechiodini/helpers/issues",
+                "source": "https://github.com/felipechiodini/helpers/tree/1.0.0"
+            },
+            "time": "2024-07-30T15:53:25+00:00"
         },
         {
             "name": "fruitcake/php-cors",

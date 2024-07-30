@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Rules\Cpf as RulesCpf;
 use Felipechiodini\Cpf\Cpf;
+use Felipechiodini\Helpers\Helpers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -24,7 +25,7 @@ class SingUpController extends Controller
 
         $user = User::query()
             ->create([
-                'name' => $request->name,
+                'name' => Helpers::captalizeName($request->name),
                 'document' => new Cpf($request->document),
                 'cellphone' => $request->cellphone,
                 'email' => Str::lower($request->email),
