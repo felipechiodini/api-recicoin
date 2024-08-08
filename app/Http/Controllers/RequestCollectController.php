@@ -55,7 +55,7 @@ class RequestCollectController extends Controller
     {
         $user = auth()->user();
 
-        return new User();
+        return new User($user->id);
     }
 
     private function makeAddress(): Address
