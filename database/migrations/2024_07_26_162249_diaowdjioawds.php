@@ -18,6 +18,18 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('collect_addresses', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('collect_id')->references('id')->on('user_collects');
+            $table->string('cep');
+            $table->string('street');
+            $table->string('number');
+            $table->string('city');
+            $table->string('state');
+            $table->string('complement')->nullable();
+            $table->timestamps();
+        });
+
         Schema::create('collect_histories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('collect_id')->references('id')->on('user_collects');

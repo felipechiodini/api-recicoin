@@ -5,13 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CollectHistory extends Model
+class UserAddress extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'collect_id',
-        'type',
-        'description',
+        'user_id',
+        'cep',
+        'street',
+        'number',
+        'complement',
+        'neighborhood',
+        'city',
+        'state'
     ];
 }
