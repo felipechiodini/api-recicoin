@@ -9,15 +9,12 @@ use Illuminate\Http\Request;
 
 class ExtractController extends Controller
 {
-
     public function __invoke(Request $request)
     {
         $points = Helpers::formatCurrency(1000);
 
-        $extracts = UserTransaction::query()
-            ->where('user_id', $request->user()->id)
-            ->orderBy('created_at', 'desc')
-            ->get()
+        $respository = new \App\Modules\Collect\CollectRepository();
+        $extracts = $respository->getAllTransactions($request->user())
             ->map(function(UserTransaction $transaction) {
                 return [
                     'id' => $transaction->id,
@@ -29,7 +26,5 @@ class ExtractController extends Controller
 
         return response()
             ->json(compact('extracts', 'points'));
-
     }
-
 }
