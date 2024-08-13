@@ -12,7 +12,6 @@ use Illuminate\Support\Str;
 
 class SingUpController extends Controller
 {
-
     public function __invoke(Request $request)
     {
         $request->validate([
@@ -32,8 +31,9 @@ class SingUpController extends Controller
                 'password' => Hash::make($request->password)
             ]);
 
-        return response()
-            ->json(compact('user'));
-    }
+        $message = 'Usuário criado com sucesso!';
 
+        return response()
+            ->json(compact('user', 'message'));
+    }
 }

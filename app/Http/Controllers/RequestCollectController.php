@@ -6,70 +6,48 @@ use App\Models\CollectAddress;
 use App\Models\CollectHistory;
 use App\Models\UserAddress;
 use App\Models\UserCollect;
-use App\Modules\Address\Address;
-use App\Modules\Cep\Cep;
-use App\Modules\Collect\Collect;
-use App\Modules\User\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RequestCollectController extends Controller
 {
-
     public function __invoke(Request $request)
     {
         $request->validate([
             'address_id' => ['required'],
         ]);
 
-        $collect = (new Collect())
-            ->setUser($this->makeUser())
-            ->setAddress($this->makeAddress());
+        $userAddress = UserAddress::query()
+            ->where('id', request('address_id'))
+            ->first();
 
-        $model = UserCollect::query()
+        DB::beginTransaction();
+
+        $collect = UserCollect::query()
             ->create([
-                'user_id' => $collect->user->id,
-                'status' => $collect->status
+                'user_id' => $request->user()->id,
+                'status' => 'pending'
             ]);
 
         CollectAddress::query()
             ->create([
-                'collect_id' => $model->id,
-                'cep' => $collect->address->cep,
-                'street' => $collect->address->street
+                'collect_id' => $collect->id,
+                'cep' => $userAddress->cep,
+                'street' => $userAddress->street
             ]);
 
         CollectHistory::query()
             ->create([
-                'collect_id' => $model->id,
+                'collect_id' => $collect->id,
                 'type' => 'request',
                 'description' => 'Solicitação de coleta',
             ]);
+
+        DB::commit();
 
         $message = 'Sua solicitação de coleta foi enviada com sucesso!';
 
         return response()
             ->json(compact('message', 'collect'));
     }
-
-    private function makeUser(): User
-    {
-        $user = auth()->user();
-
-        return new User($user->id);
-    }
-
-    private function makeAddress(): Address
-    {
-        $model = UserAddress::query()
-            ->where('id', request('address_id'))
-            ->first();
-
-        return new Address(
-            $model->id,
-            new Cep($model->cep),
-            $model->street,
-            $model->number,
-        );
-    }
-
 }
