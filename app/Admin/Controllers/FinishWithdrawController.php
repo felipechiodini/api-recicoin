@@ -7,7 +7,7 @@ use App\Models\UserTransaction;
 use App\Models\UserWithdrawRequest;
 use Illuminate\Support\Facades\DB;
 
-class ThrowWithdrawController
+class FinishWithdrawController
 {
     public function __invoke(UserWithdrawRequest $userWithdrawRequest)
     {
