@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\User\Controllers;
 
 use App\Models\CollectAddress;
 use App\Models\CollectHistory;
@@ -9,7 +9,7 @@ use App\Models\UserCollect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class RequestCollectController extends Controller
+class RequestCollectController
 {
     public function __invoke(Request $request)
     {

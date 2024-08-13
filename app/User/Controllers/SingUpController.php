@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\User\Controllers;
 
 use App\Models\User;
 use App\Rules\Cpf as RulesCpf;
@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class SingUpController extends Controller
+class SingUpController
 {
     public function __invoke(Request $request)
     {

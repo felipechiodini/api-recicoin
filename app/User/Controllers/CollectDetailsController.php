@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\User\Controllers;
 
 use App\Models\CollectAddress;
 use App\Models\CollectHistory;
@@ -8,7 +8,7 @@ use App\Models\UserCollect;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class CollectDetailsController extends Controller
+class CollectDetailsController
 {
     public function __invoke(UserCollect $userCollect, Request $request)
     {

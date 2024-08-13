@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\User\Controllers;
 
 use App\Models\UserAddress;
 use Illuminate\Http\Request;
 
-class CreateAddressController extends Controller
+class CreateAddressController
 {
     public function __invoke(Request $request)
     {

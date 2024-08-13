@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\User\Controllers;
 
 use Illuminate\Http\Request;
 
-class LogoutController extends Controller
+class LogoutController
 {
     public function __invoke(Request $request)
     {
