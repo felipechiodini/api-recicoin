@@ -12,6 +12,5 @@ class UserCollect extends Model
     protected $fillable = [
         'user_id',
         'status',
-        'value'
     ];
 }

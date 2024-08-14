@@ -17,6 +17,7 @@ class ListCollectController
                 $user = User::find($userCollect->user_id);
 
                 return [
+                    'id' => $userCollect->id,
                     'user' => $user,
                     'status' => Status::from($userCollect->status)->label()
                 ];
