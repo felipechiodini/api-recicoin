@@ -33,7 +33,11 @@ class RequestCollectController
             ->create([
                 'collect_id' => $collect->id,
                 'cep' => $userAddress->cep,
-                'street' => $userAddress->street
+                'street' => $userAddress->street,
+                'number' => $userAddress->number,
+                'city' => $userAddress->city,
+                'state' => $userAddress->state,
+                'complement' => $userAddress->complement,
             ]);
 
         CollectHistory::query()

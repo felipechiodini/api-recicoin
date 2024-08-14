@@ -11,10 +11,12 @@ class ExtractController
 {
     public function __invoke(Request $request)
     {
-        $points = Helpers::formatCurrency(1000);
+        $points = Helpers::formatCurrency($request->user()->points);
 
-        $respository = new \App\Modules\Collect\CollectRepository();
-        $extracts = $respository->getAllTransactions($request->user())
+        $extracts = UserTransaction::query()
+            ->select('id', 'type', 'value', 'description', 'created_at')
+            ->where('user_id', $request->user()->id)
+            ->get()
             ->map(function(UserTransaction $transaction) {
                 return [
                     'id' => $transaction->id,

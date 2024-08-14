@@ -51,10 +51,13 @@ return new class extends Migration
         Schema::create('user_addresses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users');
+            $table->string('cep');
             $table->string('street');
+            $table->string('number');
+            $table->string('complement');
+            $table->string('neighborhood');
             $table->string('city');
             $table->string('state');
-            $table->string('cep');
         });
 
         Schema::create('user_withdraw_requests', function (Blueprint $table) {

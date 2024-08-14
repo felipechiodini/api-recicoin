@@ -13,6 +13,10 @@ class CreateAddressController
             'cep' => ['required'],
             'street' => ['required'],
             'number' => ['required'],
+            'complement' => ['nullable'],
+            'neighborhood' => ['required'],
+            'city' => ['required'],
+            'state' => ['required'],
         ]);
 
         $address = UserAddress::query()
@@ -20,7 +24,11 @@ class CreateAddressController
                 'user_id' => $request->user()->id,
                 'cep' => $request->cep,
                 'street' => $request->street,
-                'number' => $request->number
+                'number' => $request->number,
+                'complement' => $request->complement,
+                'neighborhood' => $request->neighborhood,
+                'city' => $request->city,
+                'state' => $request->state
             ]);
 
         $message = 'Endereço criado com sucesso!';

@@ -11,6 +11,6 @@ Route::middleware('auth:sanctum')
         Route::get('extract', App\User\Controllers\ExtractController::class);
         Route::post('collect/request', App\User\Controllers\RequestCollectController::class);
         Route::get('collect/{collect}/details', App\User\Controllers\CollectDetailsController::class);
-        Route::post('request-whithdraw', App\User\Controllers\RequestWhithdrawController::class);
+        Route::post('request-whithdraw', App\User\Controllers\RequestWithdrawController::class);
         Route::post('address', App\User\Controllers\CreateAddressController::class);
     });

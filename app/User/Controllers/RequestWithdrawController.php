@@ -2,21 +2,21 @@
 
 namespace App\User\Controllers;
 
-use App\Models\UserWhithdrawRequest;
+use App\Models\UserWithdrawRequest;
 use Illuminate\Http\Request;
 
-class RequestWhithdrawController
+class RequestWithdrawController
 {
     public function __invoke(Request $request)
     {
         $request->validate([
-            'amount' => ['required'],
+            'value' => ['required'],
         ]);
 
-        UserWhithdrawRequest::query()
+        UserWithdrawRequest::query()
             ->create([
                 'user_id' => $request->user()->id,
-                'amount' => $request->amount,
+                'value' => $request->value,
                 'status' => 'pending',
             ]);
 

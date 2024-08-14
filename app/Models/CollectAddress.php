@@ -12,6 +12,10 @@ class CollectAddress extends Model
     protected $fillable = [
         'collect_id',
         'cep',
-        'street'
+        'street',
+        'number',
+        'city',
+        'state',
+        'complement',
     ];
 }
