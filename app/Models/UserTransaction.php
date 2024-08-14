@@ -12,10 +12,7 @@ class UserTransaction extends Model
     protected $fillable = [
         'user_id',
         'type',
-        'amount',
-        'balance',
-        'description',
-        'created_at',
-        'updated_at',
+        'value',
+        'description'
     ];
 }

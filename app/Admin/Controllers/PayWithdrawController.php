@@ -5,15 +5,17 @@ namespace App\Admin\Controllers;
 use App\Models\User;
 use App\Models\UserTransaction;
 use App\Models\UserWithdrawRequest;
+use App\Modules\Transaction\Type;
+use App\Modules\Withdraw\Status;
 use Illuminate\Support\Facades\DB;
 
-class FinishWithdrawController
+class PayWithdrawController
 {
     public function __invoke(UserWithdrawRequest $userWithdrawRequest)
     {
         DB::beginTransaction();
 
-        $userWithdrawRequest->update(['status' => 2]);
+        $userWithdrawRequest->update(['status' => Status::Paid]);
 
         $user = User::find($userWithdrawRequest->user_id);
 
@@ -22,9 +24,9 @@ class FinishWithdrawController
         UserTransaction::query()
             ->create([
                 'user_id' => $user->id,
-                'type' => 1,
+                'type' => Type::Output,
                 'amount' => $userWithdrawRequest->value,
-                'description' => "Refente a retirada numero: {$userWithdrawRequest->id}",
+                'description' => "Refente a retirada número: {$userWithdrawRequest->id}",
             ]);
 
         DB::commit();

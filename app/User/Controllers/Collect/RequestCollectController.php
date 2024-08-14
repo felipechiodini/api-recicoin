@@ -1,11 +1,12 @@
 <?php
 
-namespace App\User\Controllers;
+namespace App\User\Controllers\Collect;
 
 use App\Models\CollectAddress;
 use App\Models\CollectHistory;
 use App\Models\UserAddress;
 use App\Models\UserCollect;
+use App\Modules\Collect\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -26,7 +27,7 @@ class RequestCollectController
         $collect = UserCollect::query()
             ->create([
                 'user_id' => $request->user()->id,
-                'status' => 'pending'
+                'status' => Status::Pending
             ]);
 
         CollectAddress::query()

@@ -3,6 +3,7 @@
 namespace App\User\Controllers;
 
 use App\Models\UserWithdrawRequest;
+use App\Modules\Withdraw\Status;
 use Illuminate\Http\Request;
 
 class RequestWithdrawController
@@ -17,7 +18,7 @@ class RequestWithdrawController
             ->create([
                 'user_id' => $request->user()->id,
                 'value' => $request->value,
-                'status' => 'pending',
+                'status' => Status::Requested
             ]);
 
         $message = 'Sua solicitação de retirada foi enviada com sucesso!';

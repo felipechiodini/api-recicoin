@@ -1,6 +1,6 @@
 <?php
 
-namespace App\User\Controllers;
+namespace App\User\Controllers\Collect;
 
 use App\Models\CollectAddress;
 use App\Models\CollectHistory;
