@@ -4,19 +4,18 @@ namespace App\Admin\Controllers;
 
 use App\Models\CollectHistory;
 use App\Models\UserCollect;
+use App\Modules\Collect\Status;
 
 class AcceptCollectController
 {
     public function __invoke(UserCollect $userCollect)
     {
-        $userCollect->update([
-            'status' => 1
-        ]);
+        $userCollect->update(['status' => Status::Accepted]);
 
         CollectHistory::query()
             ->create([
                 'collect_id' => $userCollect->id,
-                'type' => 1,
+                'type' => Status::Accepted,
                 'description' => 'Coleta aceita',
             ]);
 
