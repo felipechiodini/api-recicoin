@@ -14,13 +14,14 @@ class ExtractController
     {
         $balance = Helpers::formatCurrency($request->user()->balance);
 
-        $extracts = UserTransaction::query()
+        $transactions = UserTransaction::query()
             ->select('type', 'value', 'description', 'created_at')
             ->where('user_id', $request->user()->id)
             ->get()
             ->map(function(UserTransaction $transaction) {
                 return [
-                    'type' => Type::from($transaction->type)->label(),
+                    'type' => $transaction->type,
+                    'type_label' => Type::from($transaction->type)->label(),
                     'value' => Helpers::formatCurrency($transaction->value),
                     'description' => $transaction->description,
                     'date' => Carbon::parse($transaction->created_at)->format('d/m/Y H:i:s'),
@@ -28,6 +29,6 @@ class ExtractController
             });
 
         return response()
-            ->json(compact('extracts', 'balance'));
+            ->json(compact('transactions', 'balance'));
     }
 }
