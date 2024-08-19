@@ -7,23 +7,29 @@ use App\Models\CollectHistory;
 use App\Models\User;
 use App\Models\UserCollect;
 use App\Modules\Collect\Status;
+use Illuminate\Http\Request;
 
 class FinishCollectController
 {
-    public function __invoke(UserCollect $userCollect)
+    public function __invoke(UserCollect $collect, Request $request)
     {
-        $userCollect->update(['status' => Status::Collected]);
+        $request->validate([
+            'value' => ['required'],
+        ]);
+
+        $collect->update(['status' => Status::Collected]);
 
         CollectHistory::query()
             ->create([
-                'collect_id' => $userCollect->id,
+                'collect_id' => $collect->id,
                 'type' => Status::Collected,
-                'description' => 'Coleta completa',
+                'description' => 'Coleta completa'
             ]);
 
         InputBalance::dispatch(
-            User::find($userCollect->user_id),
-            $userCollect
+            User::find($collect->user_id),
+            $collect,
+            $request->value
         );
 
         $message = 'Coleta completada com sucesso!';
