@@ -5,6 +5,7 @@ namespace App\User\Controllers\Collect;
 use App\Models\CollectAddress;
 use App\Models\CollectHistory;
 use App\Models\UserCollect;
+use App\Modules\Collect\Status;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,7 @@ class CollectDetailsController
 
         $collect = [
             'id' => $userCollect->id,
-            'status' => $userCollect->status,
+            'status' => Status::from($userCollect->status)->label(),
             'histories' => $histories,
             'requested_at' => Carbon::parse($userCollect->created_at)->format('d/m/Y H:i:s'),
             'address' => $address
