@@ -15,7 +15,13 @@ class CollectDetailsController
     {
         $histories = CollectHistory::query()
             ->where('collect_id', $userCollect->id)
-            ->get();
+            ->get()
+            ->map(function ($history) {
+                return [
+                    'type' => Status::from($history->type)->label(),
+                    'description' => $history->description,
+                ];
+            });
 
         $address = CollectAddress::query()
             ->where('collect_id', $userCollect->id)
