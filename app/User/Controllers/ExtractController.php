@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Felipechiodini\Helpers\Helpers;
 use Illuminate\Http\Request;
 
-class ExtractController
+class HomeController
 {
     public function __invoke(Request $request)
     {
