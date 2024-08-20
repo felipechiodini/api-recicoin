@@ -34,7 +34,6 @@ class teste extends Command
      */
     public function handle()
     {
-
         InputBalance::dispatch(ModelsUser::find(1), UserCollect::find(1), 1000);
     }
 }

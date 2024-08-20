@@ -41,7 +41,7 @@ return new class extends Migration
         Schema::create('user_transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('collect_id')->references('id')->on('user_collects');
+            $table->foreignId('collect_id')->nullable()->references('id')->on('user_collects');
             $table->string('type');
             $table->integer('value');
             $table->string('description')->nullable();

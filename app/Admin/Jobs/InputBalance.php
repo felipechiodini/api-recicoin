@@ -38,7 +38,7 @@ class InputBalance implements ShouldQueue
             ->create([
                 'user_id' => $this->user->id,
                 'type' => Type::Input,
-                'amount' => $this->value,
+                'value' => $this->value,
                 'description' => "Referente a coleta número: {$this->userCollect->id}",
             ]);
 
