@@ -2,8 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Admin\Jobs\InputBalance;
 use App\Models\Collect as ModelsCollect;
 use App\Models\CollectAddress;
+use App\Models\User as ModelsUser;
 use App\Models\UserAddress;
 use App\Models\UserCollect;
 use App\Modules\Address\Address;
@@ -32,29 +34,7 @@ class teste extends Command
      */
     public function handle()
     {
-        $model = UserAddress::query()
-            ->where('id', 1)
-            ->first();
 
-        $collect = (new Collect())
-            ->setUser(new User(1))
-            ->setAddress(new Address(1));
-
-        $model = UserCollect::query()
-            ->create([
-                'user_id' => $collect->user->id,
-                'status' => $collect->status
-            ]);
-
-        CollectAddress::query()
-            ->create([
-                'collect_id' => $model->id,
-                'cep' => $collect->address->cep,
-                'street' => $collect->address->street
-            ]);
-
-        dd($d);
-
-        //
+        InputBalance::dispatch(ModelsUser::find(1), UserCollect::find(1), 1000);
     }
 }
