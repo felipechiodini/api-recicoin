@@ -23,7 +23,7 @@ class LoginController
 
         if (!$user || !Hash::check($credentials['password'], $user->password)) {
             throw ValidationException::withMessages([
-                'email' => 'Invalid Credentials',
+                'email' => 'Usuário ou senha inválidos.',
             ]);
         }
 
