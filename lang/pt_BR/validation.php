@@ -161,6 +161,7 @@ return [
     'url'                  => 'O campo :attribute tem um formato inválido.',
     'ulid'                 => 'O campo :attribute deve ser um ULID válido.',
     'uuid'                 => 'O campo :attribute deve ser um UUID válido.',
+    'document'             => 'O campo :attribute deve ser um documento válido.',
 
     /*
     |--------------------------------------------------------------------------
@@ -235,7 +236,9 @@ return [
         'modality' => 'modalidade',
         'category' => 'categoria',
         'blood_type' => 'tipo sanguíneo',
-        'birth_date' => 'data de nascimento'
+        'birth_date' => 'data de nascimento',
+        'document' => 'documento',
+        'cellphone ' => 'celular',
     ],
 
 ];
