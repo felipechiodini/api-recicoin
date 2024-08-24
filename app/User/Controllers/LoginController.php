@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\UserAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class LoginController
 {
@@ -21,7 +22,9 @@ class LoginController
             ->first();
 
         if (!$user || !Hash::check($credentials['password'], $user->password)) {
-            return response()->json(['message' => 'Invalid Credentials'], 401);
+            throw ValidationException::withMessages([
+                'email' => 'Invalid Credentials',
+            ]);
         }
 
         $token = $user->createToken($user->name.'-AuthToken')->plainTextToken;
