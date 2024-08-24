@@ -15,4 +15,5 @@ Route::middleware('auth:sanctum')
         Route::post('request-whithdraw', App\User\Controllers\RequestWithdrawController::class);
         Route::get('address', App\User\Controllers\ListAddressController::class);
         Route::post('address', App\User\Controllers\CreateAddressController::class);
+        Route::get('withdraw', App\User\Controllers\ListWithdraw::class);
     });

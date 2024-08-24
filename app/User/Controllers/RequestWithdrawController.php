@@ -5,6 +5,7 @@ namespace App\User\Controllers;
 use App\Models\UserWithdrawRequest;
 use App\Modules\Withdraw\Status;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class RequestWithdrawController
 {
@@ -13,6 +14,18 @@ class RequestWithdrawController
         $request->validate([
             'value' => ['required'],
         ]);
+
+        if ($request->value < 5) {
+            throw ValidationException::withMessages([
+                'value' => 'O valor mínimo da retirada é de 5 reais!'
+            ]);
+        }
+
+        if ($request->value > $request->user()->balance) {
+            throw ValidationException::withMessages([
+                'value' => 'Saldo insuficiente!'
+            ]);
+        }
 
         UserWithdrawRequest::query()
             ->create([
