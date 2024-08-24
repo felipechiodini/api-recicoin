@@ -14,6 +14,7 @@ class ListAddressController
             ->get()
             ->map(function(UserAddress $userAddress) {
                 return [
+                    'id' => $userAddress->id,
                     'cep' => $userAddress->cep,
                     'street' => $userAddress->street,
                     'number' => $userAddress->number,
