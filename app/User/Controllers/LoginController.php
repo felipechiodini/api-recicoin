@@ -26,21 +26,7 @@ class LoginController
 
         $token = $user->createToken($user->name.'-AuthToken')->plainTextToken;
 
-        $addresses = UserAddress::query()
-            ->get('cep', 'street', 'number', 'complement', 'neighborhood', 'city', 'state')
-            ->map(function(UserAddress $userAddress) {
-                return [
-                    'cep' => $userAddress->cep,
-                    'street' => $userAddress->street,
-                    'number' => $userAddress->number,
-                    'complement' => $userAddress->complement,
-                    'neighborhood' => $userAddress->neighborhood,
-                    'city' => $userAddress->city,
-                    'state' => $userAddress->state
-                ];
-            });
-
         return response()
-            ->json(compact('user', 'token', 'addresses'));
+            ->json(compact('user', 'token'));
     }
 }

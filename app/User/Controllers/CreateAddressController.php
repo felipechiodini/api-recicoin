@@ -3,6 +3,7 @@
 namespace App\User\Controllers;
 
 use App\Models\UserAddress;
+use Felipechiodini\Helpers\Helpers;
 use Illuminate\Http\Request;
 
 class CreateAddressController
@@ -22,7 +23,7 @@ class CreateAddressController
         $address = UserAddress::query()
             ->create([
                 'user_id' => $request->user()->id,
-                'cep' => $request->cep,
+                'cep' => Helpers::clearAllIsNotNumber($request->cep),
                 'street' => $request->street,
                 'number' => $request->number,
                 'complement' => $request->complement,

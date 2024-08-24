@@ -26,7 +26,7 @@ class SingUpController
             ->create([
                 'name' => Helpers::captalizeName($request->name),
                 'document' => new Cpf($request->document),
-                'cellphone' => $request->cellphone,
+                'cellphone' => Helpers::clearAllIsNotNumber($request->cellphone),
                 'email' => Str::lower($request->email),
                 'password' => Hash::make($request->password)
             ]);
